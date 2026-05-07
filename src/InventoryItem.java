@@ -36,15 +36,21 @@ public class InventoryItem implements Restockable
 	// An InventoryItem has-a quantity
 	private int quantity;
 	
+	// An InventoryItem has-a selection code
+	private String selectionCode;
+	
 	/**
 	 * Purpose: Initializes an InventoryItem object with a specific product and quantity.
 	 * @param product the product associated with this inventory item
 	 * @param quantity the initial quantity of the product
+	 * @param selectionCode the selection code of the product
 	 */
-	public InventoryItem(Product product, int quantity)
+	public InventoryItem(Product product, int quantity, String selectionCode)
 	{
 		this.product = product;
 		this.quantity = quantity;
+		this.selectionCode = selectionCode;	
+		
 	}
 	
 	/**
@@ -63,6 +69,15 @@ public class InventoryItem implements Restockable
 	public int getQuantity()
 	{
 		return quantity;
+	}
+	
+	/**
+	 * Purpose: Returns the selection code of the product
+	 * @return the selection code
+	 */
+	public String getSelectionCode()
+	{
+		return selectionCode;
 	}
 	
 	/**
@@ -92,11 +107,11 @@ public class InventoryItem implements Restockable
 	
 	/**
 	 * Purpose: Returns a String representation of the InventoryItem object
-	 * @return a String containing the product information and current available quantity
+	 * @return a String containing the selection code, product information and current available quantity
 	 */
 	@Override
 	public String toString()
 	{
-		return product.toString() + " Quantity: " + quantity;
+		return selectionCode + " - " + product.toString() + " Quantity: " + quantity;
 	}
 }
