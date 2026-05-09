@@ -18,14 +18,14 @@ import java.util.ArrayList;
 * Method Chaining in Java with Examples.
 * https://www.geeksforgeeks.org/java/method-chaining-in-java-with-examples/
 *
-* Version: 2026-05-08
+* Version: 2026-04-27
 *
 * Responsibilities of class:
 * To manage the vending machine's inventory of products.
 * To track the user's current balance.
 * To allow users to insert money into the machine.
 * To process product purchases and update inventory accordingly.
-* To handle cases like insufficient funds or out-of-stock products.
+* To handle cases like insufficient funds or ou-of-stock products.
 *
 * VendingMachine is-a class that represents a vending machine system
 * 
@@ -36,7 +36,7 @@ public class VendingMachine
 	private ArrayList<InventoryItem> inventory;
 	
 	// A VendingMachine has-a current user balance
-	private double userBalance;
+	private double balance;
 	
 	/**
 	 * Purpose: Initializes a VendingMachine object with an empty inventory and a starting user balance of 0.0
@@ -44,7 +44,7 @@ public class VendingMachine
 	public VendingMachine()
 	{
 		inventory = new ArrayList<>();
-		userBalance = 0.0;
+		balance = 0.0;
 	}
 	
 	/**
@@ -64,17 +64,17 @@ public class VendingMachine
 	{
 		if (amount > 0)
 		{
-			userBalance += amount;
+			balance += amount;
 		}
 	}
 	
 	/**
-	 * Purpose: Returns the user's current balance
-	 * @return the current user balance
+	 * Purpose: Returns the current user balance
+	 * @return the current balance
 	 */
-	public double getUserBalance()
+	public double getBalance()
 	{
-		return userBalance;
+		return balance;
 	}
 	
 	/**
@@ -87,8 +87,9 @@ public class VendingMachine
 		{
 			InventoryItem item = inventory.get(i);
 			
-			System.out.printf( i + ". " + item.getProduct().getName() 
-					+ " - $%.2f - Quantity: %d%n", item.getProduct().getPrice(), item.getQuantity());
+			System.out.println( i + ". " + item.getProduct().getName() 
+					+ " - $" + item.getProduct().getPrice() 
+					+ " - Quantity: " + item.getQuantity());
 		}
 	}
 	
@@ -96,34 +97,32 @@ public class VendingMachine
 	 * Purpose: Processes the purchase of the selected item by its index position in the ArrayList.
 	 * Also checks whether the selection is valid, whether the item is in stock, and whether the user has sufficient funds before the purchase is completed.
 	 * @param index the position of the selected item in the inventory ArrayList
-	 * @throws OutOfStockException if the selected item is out of stock
-	 * @throws InsufficientFundsException if the user's balance is too low
-	 * @throws InvalidSelectionException if the selected index is invalid
 	 */
-	public void purchaseItem(int index) throws OutOfStockException, InsufficientFundsException, InvalidSelectionException
+	public void purchaseItem(int index)
 	{
 		if (index < 0 || index >= inventory.size())
 		{
-			throw new InvalidSelectionException("Invalid Selection.");
+			System.out.println("Invalid Selection.");
+			return;
 		}
 		
 		InventoryItem item = inventory.get(index);
 		
 		if (item.getQuantity() == 0)
 		{
-			throw new OutOfStockException("Sorry, this item is out of stock.");
+			System.out.println("Sorry, this item is out of stock.");
+			
 		}
-		
-		if (userBalance < item.getProduct().getPrice())
+		else if (balance < item.getProduct().getPrice())
 		{
-			throw new InsufficientFundsException("Insufficient funds. Please add more money to balance.");
+			System.out.println("Insufficient funds. Please add more money to balance.");
 		}
-		
-		
-		userBalance -= item.getProduct().getPrice();
-		item.reduceQuantity();
-		System.out.println("Purchased: " + item.getProduct().getName());
-		
+		else
+		{
+			balance -= item.getProduct().getPrice();
+			item.reduceQuantity();
+			System.out.println("Purchased: " + item.getProduct().getName());
+		}
 		
 	}
 }
