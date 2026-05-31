@@ -84,12 +84,14 @@ public class InventoryItem implements Restockable
 	 * Purpose: Reduces the quantity of the InventoryItem if the quantity is not already 0.
 	 * 
 	 */
-	public void reduceQuantity()
+	public void reduceQuantity() throws OutOfStockException
 	{
-		if (quantity > 0)
-		{
-			quantity--;
-		}
+	    if (quantity == 0)
+	    {
+	        throw new OutOfStockException("Sorry, this item is out of stock.");
+	    }
+
+	    quantity--;
 	}
 	
 	/**

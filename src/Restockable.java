@@ -19,10 +19,17 @@
 */
 
 /**
- * Purpose: The reponsibility of Restockable is ...
+ * Responsibilities of Interface:
+ * To define behavior for classes that can have their quantity increased.
+ * To require implementing classes to provide a restock method.
  *
- * Restockable is-a ...
- * Restockable is ...
+ * Restockable is-an interface.
+ * 
+ */
+
+/**
+ * Purpose: Defines the behavior for increasing the quantity of a restockable item.
+ * @param amount the amount to add to the current quantity
  */
 public interface Restockable
 {

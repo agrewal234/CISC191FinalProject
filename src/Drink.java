@@ -19,10 +19,12 @@
 */
 
 /**
- * Purpose: The reponsibility of Drink is ...
+ * Responsibilities of class:
+ * To represent a drink product in the vending machine.
+ * To inherit shared product information, such as name and price, from the Product class.
  *
- * Drink is-a Product
- * Drink is ...
+ * A Drink is-a Product
+ * 
  */
 public class Drink extends Product
 {
@@ -35,7 +37,7 @@ public class Drink extends Product
 	public Drink(String name, double price)
 	{
 		super(name, price);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

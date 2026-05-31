@@ -13,7 +13,9 @@
 * Java, Java, Java: Object-Oriented Problem Solving
 * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
 *
-* <<Add more references here>>
+* GeeksforGeeks. (2025, August 8).
+* SerialVersionUID in Java.
+* Retrieved from https://www.geeksforgeeks.org/java/serialversionuid-in-java/
 *
 * Version: 2026-05-08
 */
@@ -27,6 +29,8 @@
  */
 public class OutOfStockException extends Exception
 {
+	private static final long serialVersionUID = 1L;
+	
 	public OutOfStockException(String message)
 	{
 		super(message);

@@ -125,4 +125,19 @@ public class VendingMachine
 		}
 		
 	}
+	
+	/**
+	 * Purpose: Creates and returns a String displaying all inventory items currently stored in the vending machine. 
+	 * Displays the item's index number, product name & price, and the current quantity available.
+	 * @return a String containing all inventory information
+	 */
+	public String getInventoryDisplay()
+	{
+		String display = "";
+		
+		for (int i = 0; i < inventory.size(); i++)
+		{
+			InventoryItem item = inventory.get(i);
+		}
+	}
 }

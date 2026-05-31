@@ -19,10 +19,11 @@
 */
 
 /**
- * Purpose: The reponsibility of Snack is ...
+ * Responsibilities of class:
+ * To represent a snack product in the vending machine.
+ * To inherit shared product information, such as name and price, from the Product class.
  *
- * Snack is-a Product
- * Snack is ...
+ * A Snack is-a Product
  */
 public class Snack extends Product
 {
