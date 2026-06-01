@@ -228,6 +228,7 @@ public class VendingMachineGUI extends JFrame
         JButton addFiveButton = new JButton("Add $5.00");
         JButton purchaseButton = new JButton("Purchase");
         JButton cancelButton = new JButton("Cancel");
+        JButton reportButton = new JButton("Save Report");
 
         // Registers an ActionListener with the "Add $1.00" button
         // When the button is clicked, actionPerformed() executes and adds $1.00 to the user's balance.
@@ -272,6 +273,20 @@ public class VendingMachineGUI extends JFrame
                 cancelTransaction();
             }
         });
+        
+        // Registers an ActionListener with the Report button
+        // When clicked, the current vending machine report is saved to a text file
+        reportButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+            	// Saves the current inventory and balance information to a report file.
+                vendingMachine.saveReportToFile();
+                
+                messageLabel.setText("Report saved to vending_machine_report.txt.");
+            }
+        });      
 
         // Adds all buttons to the button panel
         buttonPanel.add(item0Button);
@@ -287,6 +302,7 @@ public class VendingMachineGUI extends JFrame
         buttonPanel.add(addFiveButton);
         buttonPanel.add(purchaseButton);
         buttonPanel.add(cancelButton);
+        buttonPanel.add(reportButton);
 
         // Adds the button panel to the bottom of the window
         add(buttonPanel, BorderLayout.SOUTH);

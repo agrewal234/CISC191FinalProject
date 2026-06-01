@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 /**
 * Lead Author(s):
 * @author Anisa Grewal
@@ -209,6 +211,46 @@ public class VendingMachine
 	    {
 	    	// Displays an error message if the file cannot be written.
 	        System.out.println("Transaction could not be saved.");
+	    }
+	}
+	
+	/**
+	 * Purpose: Saves the current vending machine report to a text file.
+	 * The report includes the current inventory and user balance.
+	 */
+	public void saveReportToFile()
+	{
+	    try
+	    {
+	        // Creates a PrintWriter object used to write to the report file.
+	        PrintWriter writer = new PrintWriter("vending_machine_report.txt");
+
+	        // Writes the report title.
+	        writer.println("Vending Machine Report");
+
+	        // Writes a separator line.
+	        writer.println("----------------------");
+
+	        // Writes the current user balance.
+	        writer.println("Current User Balance: $"
+	                + String.format("%.2f", userBalance));
+
+	        // Adds a blank line.
+	        writer.println();
+
+	        // Writes the current inventory heading.
+	        writer.println("Current Inventory:");
+
+	        // Writes the current inventory information.
+	        writer.print(getInventoryDisplay());
+
+	        // Closes the file and saves the content.
+	        writer.close();
+	    }
+	    catch (FileNotFoundException e)
+	    {
+	        // Displays an error message if the report cannot be saved.
+	        System.out.println("Report could not be saved.");
 	    }
 	}
 	
